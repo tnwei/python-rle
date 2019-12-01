@@ -1,4 +1,4 @@
-# pyrle
+# pyrle (Work in Progress!)
 
 Run-length encoding [(wikipedia link)](https://en.wikipedia.org/wiki/Run-length_encoding) for data analysis in Python. 
 
@@ -10,7 +10,7 @@ Run-length encoding [(wikipedia link)](https://en.wikipedia.org/wiki/Run-length_
 
 ## Motivation
 
-Base R contains a simple `rle` function that "computes the lengths and values of runs of equal values in a vector", as described by its docstring. I found it useful for calculating streaks in collected data, especially for compiling and summarizing data that describes the status of an object. I wasn't able to find an implementation of this in Python, other than the myriad of code examples that use run-length encoding to demonstrate data compression. Hence this little utility.
+Base R contains a simple `rle` function that "computes the lengths and values of runs of equal values in a vector", as described by its docstring. I found it useful for calculating streaks in collected data, and is especially wonderful for compiling and summarizing categorical data that describes status over time. I wasn't able to find an implementation of this in Python, other than the myriad of code examples that use run-length encoding to demonstrate data compression. Hence this little utility.
 
 <!--
 ## Reference to `rle` in R
