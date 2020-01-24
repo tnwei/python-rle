@@ -1,5 +1,7 @@
 import rle
 
+## Test rle.encode
+
 def test_working():
     test_list = [1, 2, 2, 4, 4, 4, 5, 3]
     assert rle.encode(test_list) == ([1, 2, 4, 5, 3], [1, 2, 3, 1, 1])
@@ -18,4 +20,3 @@ def test_one_unique_value_only():
 def test_last_value_different():
     test_list = [1] * 49 + [2]
     assert rle.encode(test_list) == ([1, 2], [49, 1])
-    
