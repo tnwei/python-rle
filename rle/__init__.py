@@ -1,6 +1,4 @@
-from tqdm import tqdm
-from functools import reduce
-from itertools import accumulate
+from functools import reduce as _reduce
 
 def encode(seq):
     """
@@ -28,7 +26,7 @@ def encode(seq):
     current_count = 1
     current_start_idx = 0
     
-    for idx in tqdm(range(1, len(seq))):
+    for idx in range(1, len(seq)):
         # If the current value is the same as the last 
         # recorded unique value
         if seq[idx] == values[-1]:
@@ -52,7 +50,7 @@ def encode(seq):
 
 
 def mp_encode(seq, n_jobs=-1, n_chunks='auto', 
-             backend='loky', verbose=0):
+             backend='loky', verbose=1):
     
     """
     Parallelized version of `encode`.
@@ -64,7 +62,7 @@ def mp_encode(seq, n_jobs=-1, n_chunks='auto',
     n_jobs: Number of workers to parallelize, `n_jobs` parameter to be passed to joblib.Parallel. Defaults to -1.
     n_chunks: Number of chunks to split the input data into. Defaults to 'auto'.
     backend: Choice of backend for parallelization, `backend` parameter to be passed to joblib.Parallel. Defaults to 'loky'.
-    verbose: Verbosity level, `verbose` parameter to be passed to joblib.Parallel. Defaults to 0.
+    verbose: Verbosity level, `verbose` parameter to be passed to joblib.Parallel. Defaults to 1.
     
     Returns
     -------
@@ -134,7 +132,7 @@ def _find_split_indices(length, n_chunks):
     # Note that num of cuts needed are n_chunks-1
     # cut_indices = [n1, n2, n3, n4, nn]
     # Last num is always the total length of the sequence
-    cut_indices = [reduce(lambda x, y: x+y, chunk_lengths[:i+1]) for i in range(n_chunks)]
+    cut_indices = [_reduce(lambda x, y: x+y, chunk_lengths[:i+1]) for i in range(n_chunks)]
     cut_indices.insert(0, 0)
     
     # Transform list of places to cut into proper list of indices
@@ -167,7 +165,7 @@ def decode(values, counts):
         raise ValueError('Counts contain non-integer values')
     
     seq = [[i] * j for i, j in zip(values, counts)]
-    seq = reduce(lambda x, y: x + y, seq)
+    seq = _reduce(lambda x, y: x + y, seq)
     return seq
         
     
