@@ -5,7 +5,7 @@ with open('README.md', "r") as f:
 
 setuptools.setup(
     name='python-rle', 
-    version="0.0.2",
+    version="0.0.3",
     author="Tan Nian Wei",
     author_email="tannianwei@aggienetwork.com",
     description="Run-length encoding for data analysis in Python",
@@ -14,7 +14,7 @@ setuptools.setup(
     url="https://github.com/tnwei/pyrle",
     packages=setuptools.find_packages(),
     install_requires=[
-          "joblib",
+          "tqdm",
       ],
     classifiers=[
         "Programming Language :: Python :: 3",

@@ -1,6 +1,7 @@
 from functools import reduce as _reduce
+from tqdm import tqdm as _tqdm
 
-def encode(seq):
+def encode(seq, progress_bar=False):
     """
     Encodes run-length encoding of given iterable.
     
@@ -26,7 +27,12 @@ def encode(seq):
     current_count = 1
     current_start_idx = 0
     
-    for idx in range(1, len(seq)):
+    if progress_bar == True:
+        iterator = _tqdm(range(1, len(seq)))
+    else:
+        iterator = range(1, len(seq))
+    
+    for idx in iterator:
         # If the current value is the same as the last 
         # recorded unique value
         if seq[idx] == values[-1]:
@@ -49,11 +55,11 @@ def encode(seq):
     return values, counts
 
 
-def mp_encode(seq, n_jobs=-1, n_chunks='auto', 
+def _mp_encode(seq, n_jobs=-1, n_chunks='auto', 
              backend='loky', verbose=1):
     
     """
-    Parallelized version of `encode`.
+    Parallelized version of `encode`. Deprecated as parallelization is determined to be much slower than breaking sequences into chunks for sequential encoding. 
     
     Parameters
     ----------
