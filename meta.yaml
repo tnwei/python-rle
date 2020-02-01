@@ -1,0 +1,42 @@
+{% set name = "python-rle" %}
+{% set version = "0.0.3" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: 4e07dc3c775a4bbc6e2cc7a3102e4cf33f4431e35c7b5fedc863edc44bc7b6aa
+
+build:
+  noarch: python
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - pip
+    - python
+    - tqdm
+  run:
+    - python
+    - tqdm
+
+test:
+  imports:
+    - rle
+    - tests
+
+about:
+  home: "https://github.com/tnwei/pyrle"
+  license: MIT
+  license_family: MIT
+  license_file: 
+  summary: "Run-length encoding for data analysis in Python"
+  doc_url: 
+  dev_url: 
+
+extra:
+  recipe-maintainers:
+    -  12769364

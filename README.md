@@ -1,6 +1,6 @@
 # python-rle
 
-Run-length encoding [(wikipedia link)](https://en.wikipedia.org/wiki/Run-length_encoding) for data analysis in Python. Install with `pip install python-rle`. No dependencies required other than `tqdm` for visualizing a progress bar. 
+Run-length encoding [(wikipedia link)](https://en.wikipedia.org/wiki/Run-length_encoding) for data analysis in Python. Install with `pip install python-rle` or `conda install -c tnwei python-rle`. No dependencies required other than `tqdm` for visualizing a progress bar. 
 
 ## Usage
 
