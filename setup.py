@@ -11,7 +11,7 @@ setuptools.setup(
     description="Run-length encoding for data analysis in Python",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/tnwei/pyrle",
+    url="https://github.com/tnwei/python-rle",
     packages=setuptools.find_packages(),
     install_requires=[
           "tqdm",
